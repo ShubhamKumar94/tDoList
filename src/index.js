@@ -3,12 +3,17 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import Signup from './components/Signup';
+import Login from './components/Login';
+import TodoInput from './components/TodoInput';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+  <App/>
+  {/* <TodoInput></TodoInput> */}
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
