@@ -28,7 +28,7 @@ const Signup = () => {
     })
     const [SignUpData,setSignUpData] = useState(data);
     function userNameErrorValidator(){
-        if(SignUpData.username==""){
+        if(SignUpData.username === ""){
             setError({...error, usernameError : "username cannot be empty"})
             return false;
         }
@@ -63,7 +63,7 @@ const Signup = () => {
             setError({...error,phonenumberError : "please provide valid phone number"})
         }
         else if(!phoneNumberHandler()){
-
+            return false;
         }
         else{
             
@@ -94,7 +94,7 @@ const Signup = () => {
                         case "G":
                     return el;
                     case "H":
-                        console.log(el);
+                        
                     return el;
                     case "I":
                     return el;
@@ -118,10 +118,8 @@ const Signup = () => {
                     return el;
                     case "S":
                         return el === "S"
-                    break;
                     case "T":
                     return el;
-                    console.log(el);
                     case "U":
                     return el;
                     case "V":
@@ -134,13 +132,14 @@ const Signup = () => {
                     return el;
                     case "Z":
                     return el;
-                     
+                     default : 
+                     return;
                                  
 
             }
             
         })
-        console.log(alpha);
+        
             if(!alpha){
                 setError({...error,passwordError:"Please provide alphaNumeric value"})
                 return false;
@@ -167,6 +166,8 @@ const Signup = () => {
                         return el;
                         case "9":
                         return el;
+                        default:
+                            return;
                 }
 
             }
@@ -183,12 +184,12 @@ const Signup = () => {
     function confirmPasswordErrorValidator(){
         let passwordArray = SignUpData.password.split("");
         let confirmPasswordArray = confirmPasswordData.confirmpassword.split("");
-        if(passwordArray.length != confirmPasswordArray.length){
+        if(passwordArray.length !== confirmPasswordArray.length){
             setError({...error,confirmPasswordError:"password does not match"})
             return false
         }
         for(let i =0; i<passwordArray.length; i++){
-            if(passwordArray[i]!=confirmPasswordArray[i]){
+            if(passwordArray[i] !== confirmPasswordArray[i]){
                setError({...error,confirmPasswordError:"password does not match"})
                return false;
             }
@@ -203,7 +204,7 @@ const Signup = () => {
             return SignUpData.username === el.username;
 
         })
-        if(userFromStorage===undefined){
+        if(userFromStorage === undefined){
             return true;
         }
         else{
@@ -217,13 +218,13 @@ const Signup = () => {
     }
     function handler(e){
         e.preventDefault();
-        console.log("handler called");
+        
         if(userNameErrorValidator()){
-            console.log("usernameError passed");
+            
             if(phoneNumberErrorValidator()){
-                console.log("phone number error passed");
+                
                 if(passwordErrorValidator()){
-                    console.log("passwordError passed");
+                    
                    if(confirmPasswordErrorValidator()){
                     let localStorageArray = JSON.parse(localStorage.getItem('info'))
                     //console.log(SignUpData);

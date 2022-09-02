@@ -14,17 +14,17 @@ const TodoInput = () => {
       errorDisplay : ""
     })
     const [dataArray,setDataArray] = useState([]);
-    const [allow,setAllow] = useState(false);
+    
     function errorHandler(){
       console.log("toDoInput");
       if(toDoInput === ""){
-        console.log("galat");
+        
         setError({errorDisplay : "Please assign the task"})
         return false;
       }
 
       let duplicateData = dataArray.find((el)=>{
-        return el.list == toDoInput
+        return el.list === toDoInput
       })
       if(duplicateData){
         setError({errorDisplay : "This task is already assigned"})
@@ -36,12 +36,11 @@ const TodoInput = () => {
       }
     }
     function deleteFunction(e){
-      console.log(e.target.id);
-      console.log(dataArray);
+     
       let  newDataArray = dataArray.filter((el)=>{
-           return e.target.id != el.id;
+           return e.target.id !== el.id;
         })
-        console.log(dataArray);
+        
         localStorage.setItem(authData.userInfo.username,newDataArray);
         setDataArray([...newDataArray]);
     }
@@ -56,9 +55,7 @@ const TodoInput = () => {
         return;
       }
     },[authData.userInfo.username])
-    function localhandler(){
-      
-    }
+   
     useEffect(()=>{
       localStorage.setItem(authData.userInfo.username,JSON.stringify(dataArray));
     },[dataArray])
@@ -74,10 +71,10 @@ const TodoInput = () => {
       setDataArray([...dataArray,{id : num , list : inputRef.current.value}])
      // setCount(count => count+1);
      
-     console.log(dataArray);
+     
       
       
-      setAllow(false);
+      
      } 
      setToDoInput("");
     }

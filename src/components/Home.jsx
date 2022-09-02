@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
+
+import {useNavigate} from 'react-router-dom'
 import { Authcontext } from '../AuthContext'
-import {NavLink,Link,useNavigate} from 'react-router-dom'
 
 const Home = () => {
-  const context = useContext(Authcontext)
+               let authData = useContext(Authcontext);
   const navigate = useNavigate()
   return (
     <>
@@ -20,10 +21,10 @@ const Home = () => {
         <li>Make Your To-Do List Scannable</li>
       </ul>
       <h4>Watch the video</h4>
-      <a className='homeContent' href='https://www.youtube.com/watch?v=TkapwZM6cJI' target="_blank">How To Organize Your To-Do Lists</a>
+      <a className='homeContent' href='https://www.youtube.com/watch?v=TkapwZM6cJI' target="_blank" rel="noreferrer">How To Organize Your To-Do Lists</a>
       <br/>
       <br/>
-      <button onClick={()=>navigate('/login')}>login</button>
+      {authData.userInfo.username === "" ? <button onClick={()=>navigate('/login')}>login</button> : null}
     </div>
     </>
   )
