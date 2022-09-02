@@ -191,8 +191,9 @@ h4{
   background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center;
-    filter: blur(8px);
+   
     -webkit-filter: blur(8px);
+    filter: blur(8px);
 }
 .bg-text {
   background-color: rgb(0,0,0); /* Fallback color */
